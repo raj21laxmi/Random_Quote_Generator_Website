@@ -7,11 +7,11 @@
     box-sizing: border-box;
 }
 body{
-    background-color: black;
+    background-color: red;
 }
 
 .wrapper{
-    background-color: bisque;
+    background-color: white;
     width: 700px;
     position: absolute;
     top: 50%;
@@ -99,4 +99,5 @@ blockquote::after{
     
 
 }
+
 
