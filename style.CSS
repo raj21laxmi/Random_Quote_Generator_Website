@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: blackviolet;
+    background-color: black;
 }
 
 .wrapper{
@@ -99,3 +99,4 @@ blockquote::after{
     
 
 }
+
