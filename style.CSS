@@ -8,11 +8,11 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgb(138, 114, 160);
+    background-color: rgb(28, 1, 53);
 }
 
 .wrapper{
-    background-color: bisque;
+    background-color: rgb(110, 100, 164);
     width: 700px;
     position: absolute;
     top: 50%;
