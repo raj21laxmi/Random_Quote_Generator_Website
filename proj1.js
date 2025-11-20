@@ -37,6 +37,14 @@ tweetBtn.addEventListener("click", ()=>{
         "tweet post", "width=400, height=400" );
 });
 
+document.querySelector('.whatsapp_btn').addEventListener('click', () => {
+    const quote = document.querySelector("blockquote").innerText;
+    const author = document.querySelector(".author").innerText;
+
+    const message = encodeURIComponent(`${quote}\n\n— ${author}`);
+
+    window.open(`https://wa.me/?text=${message}`, "_blank");
+});
 
 
 

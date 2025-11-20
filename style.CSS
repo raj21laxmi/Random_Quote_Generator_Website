@@ -7,24 +7,38 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: rgb(28, 1, 53);
+html, body {
+    height: 100%;
+}
+body {
+    background: url("images/backg.jpg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* makes it sharp */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.wrapper{
-    background-color: rgb(110, 100, 164);
-    width: 700px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+
+.wrapper {
+    width: 90%;
+    max-width: 800px;
     padding: 40px;
-    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);  /* Smooth glass effect */
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+
     text-align: center;
-    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.15 );
-
-
 }
+
 .heading{
     font-size: 32px;
     margin-bottom: 40px;
@@ -36,7 +50,7 @@ body{
     width: 160px;
     height: 3px;
     border-radius: 3px;
-    background-color: #41295a;
+    background-color: #50004a;
     position: absolute;
     top: 100px;
     left: 50%;
@@ -84,18 +98,107 @@ blockquote::after{
 
 }
 .buttons button{
-    background-color: #41295a;
-    color: #fff;
+    background-color: #ef8fd7;
+    color: #390637;
     border-radius: 10px;
     width: 125px;
     height: 50px;
     margin: 5px;
     cursor: pointer;
     font-size: 15px;
-    border: 1px #41295a ;
+    border: 1px #9d07a0 ;
 }
 .buttons button i{
     margin-right: 10px;
     font-size: 20px;
     
+}
+.whatsapp_btn {
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    border-radius: 10px;
+    width: 125px;
+    height: 50px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp_btn i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+
+
+/* =============================
+   📱  MOBILE RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+
+    .wrapper {
+        width: 90%;
+        padding: 25px;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 40px auto;
+    }
+
+    .heading {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+    .heading::after {
+        top: 70px;
+        width: 120px;
+    }
+
+    blockquote {
+        font-size: 20px;
+    }
+
+    .author {
+        float: none;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .author::before {
+        display: none;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .buttons button {
+        width: 100%;
+        height: 45px;
+        font-size: 14px;
+    }
+}
+
+
+/* 📱 SMALL MOBILE DEVICES (phones under 480px) */
+@media (max-width: 480px) {
+
+    .heading {
+        font-size: 22px;
+    }
+
+    blockquote {
+        font-size: 18px;
+    }
+
+    .buttons button i {
+        font-size: 18px;
+    }
 }
