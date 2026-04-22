@@ -7,7 +7,6 @@ const tweetBtn = document.querySelector(".tweet_btn");
 // multiple APIs
 const apis = [
     "https://api.quotable.io/random",
-    "https://zenquotes.io/api/random",
     "https://dummyjson.com/quotes/random"
 ];
 
