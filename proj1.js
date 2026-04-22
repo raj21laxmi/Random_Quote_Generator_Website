@@ -4,7 +4,7 @@ const author = document.getElementsByClassName("author")[0];
 const newQuote = document.querySelector(".quote_btn");
 const tweetBtn = document.querySelector(".tweet_btn");
 
-// multiple APIs
+// working APIs
 const apis = [
     "https://api.quotable.io/random",
     "https://dummyjson.com/quotes/random"
@@ -13,24 +13,35 @@ const apis = [
 //global variable
 let temp;
 
-// API call ----> Async await
+// timeout fetch (prevents hanging)
+const fetchWithTimeout = (url, timeout = 5000) => {
+    return Promise.race([
+        fetch(url),
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("Timeout")), timeout)
+        )
+    ]);
+};
+
+// API call
 const getData = async () => {
+    quote.innerText = "Loading...";
+    author.innerText = "";
+
     for (let api of apis) {
         try {
-            const response = await fetch(api);
+            const response = await fetchWithTimeout(api);
+
             if (!response.ok) throw new Error("API failed");
 
             const data = await response.json();
 
             let quoteText, authorText;
 
-            // handle different APIs
+            // handle APIs
             if (api.includes("quotable")) {
                 quoteText = data.content;
                 authorText = data.author;
-            } else if (api.includes("zenquotes")) {
-                quoteText = data[0].q;
-                authorText = data[0].a;
             } else if (api.includes("dummyjson")) {
                 quoteText = data.quote;
                 authorText = data.author;
@@ -40,16 +51,16 @@ const getData = async () => {
             author.innerText = authorText;
             temp = quoteText;
 
-            return; // stop after success
+            return;
 
         } catch (err) {
             console.log("API failed:", api);
         }
     }
 
-    // fallback if all fail
-    quote.innerText = "Failed to load quote";
-    author.innerText = "";
+    // fallback if all APIs fail
+    quote.innerText = "Stay positive, work hard, make it happen.";
+    author.innerText = "Unknown";
 };
 
 //function call
@@ -68,7 +79,7 @@ tweetBtn.addEventListener("click", () => {
     );
 });
 
-// whatsapp fix (renamed vars)
+// whatsapp fix
 document.querySelector('.whatsapp_btn').addEventListener('click', () => {
     const quoteText = document.querySelector("blockquote").innerText;
     const authorText = document.querySelector(".author").innerText;
